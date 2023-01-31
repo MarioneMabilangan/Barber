@@ -9,7 +9,6 @@ public class Barri {
             if (barberia.hihaLloc() > 0) {
                 clients[i] = new Client("Client " + (i + 1), barberia);
                 clients[i].start();
-                clients[i].esperaQueCreixiElCabell();
                 barber.tallarCabell();
                 barber.ferMigdiada();
             } else {

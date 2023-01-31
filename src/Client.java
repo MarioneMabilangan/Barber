@@ -7,11 +7,17 @@ public class Client extends Thread{
 
     @Override
     public void run() {
+        try {
         barberia.entraClient(this);
+        System.out.println(getName() + ": Entra");
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         esperaQueCreixiElCabell();
     }
 
-    void esperaQueCreixiElCabell() {
+    public void esperaQueCreixiElCabell() {
         try {
             System.out.println(getName() + ": Cabell creixent. Espera.");
             Thread.sleep(1000);

@@ -10,7 +10,7 @@ public class Barber extends Thread{
     public void run() {
         while (true) {
             try {
-                barberia.customers.acquire();
+                barberia.clients.acquire();
                 barberia.mutex.acquire();
                 System.out.println(getName() + ": Tallant cabell. Lloc disponible: " + barberia.numChairs);
                 barberia.mutex.release();
@@ -22,12 +22,17 @@ public class Barber extends Thread{
         }
     }
 
-    void tallarCabell() {
+    public void tallarCabell() {
+        try {
         System.out.println(getName() + ": Cabell tallat.");
+        Thread.sleep(1000);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
         barberia.seguent();
     }
 
-    void ferMigdiada() {
+    public void ferMigdiada() {
         try {
             System.out.println(getName() + ": Fent migdiada.");
             Thread.sleep(1000);
